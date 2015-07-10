@@ -10,6 +10,6 @@ Forked version of pungi with ClearOS changes applied
 * git checkout epel7
 * git remote add upstream git://pkgs.fedoraproject.org/pungi.git
 * git pull upstream epel7
-* git checkout clear7
+* git checkout infra7
 * git merge --no-commit epel7
 * git commit
