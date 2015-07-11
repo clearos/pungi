@@ -1,0 +1,23 @@
+diff -up pungi-3.12/src/pypungi/__init__.py.nomac pungi-3.12/src/pypungi/__init__.py
+--- pungi-3.12/src/pypungi/__init__.py.nomac	2014-09-11 09:53:33.000000000 -0600
++++ pungi-3.12/src/pypungi/__init__.py	2014-12-06 13:42:17.742442878 -0700
+@@ -1399,18 +1399,12 @@ class Pungi(pypungi.PungiBase):
+             self.ayum.arch.setup_arch('ppc64le')
+             self.ayum.compatarch = 'ppc64le'
+ 
+-        # Only supported mac hardware is x86 make sure we only enable mac support on arches that need it
+-        if self.tree_arch in ['x86_64']:
+-            domacboot = True
+-        else:
+-            domacboot = False
+-
+         # run the command
+         lorax = pylorax.Lorax()
+         lorax.configure()
+ 
+         lorax.run(self.ayum, product=product, version=version, release=release,
+-                  variant=variant, bugurl=bugurl, isfinal=isfinal, domacboot=domacboot,
++                  variant=variant, bugurl=bugurl, isfinal=isfinal, domacboot=False,
+                   workdir=workdir, outputdir=outputdir, volid=volid)
+ 
+         # write out the tree data for snake

@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        3.12
-Release:        3%{?dist}
+Release:        3%{?dist}.1
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -11,6 +11,7 @@ URL:            https://fedorahosted.org/pungi
 Source0:        https://fedorahosted.org/pungi/attachment/wiki/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         0001-replace-tabs-with-spaces.patch
 Patch1:         0001-Make-our-OS-iso-bootable-on-aarch64.patch
+Patch100:       pungi-3.12-nomac.patch
 Requires:       yum => 3.4.3-28, repoview, createrepo >= 0.4.11
 Requires:       lorax, python-lockfile
 BuildRequires:  python-devel
@@ -25,6 +26,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch100 -p1
 
 %build
 %{__python} setup.py build
@@ -58,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jul 10 2015 Shad L. Lords <slords@clearfoundation.com> - 3.12-3.1
+- Remove mac building, we don't need it
+
 * Mon Dec 15 2014 Dennis Gilmore <dennis@ausil.us> - 3.12-3
 - add patch to make the dvd bootable on aarch64
 
