@@ -1,2 +1,4 @@
 /pungi-2.0.21.tar.bz2
 /pungi-2.0.22.tar.bz2
+/Makefile
+*.src.rpm
