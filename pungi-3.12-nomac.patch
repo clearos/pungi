@@ -1,6 +1,6 @@
 diff -up pungi-3.12/src/pypungi/__init__.py.nomac pungi-3.12/src/pypungi/__init__.py
---- pungi-3.12/src/pypungi/__init__.py.nomac	2014-09-11 09:53:33.000000000 -0600
-+++ pungi-3.12/src/pypungi/__init__.py	2014-12-06 13:42:17.742442878 -0700
+--- pungi-3.12/src/pypungi/__init__.py.nomac
++++ pungi-3.12/src/pypungi/__init__.py
 @@ -1399,18 +1399,12 @@ class Pungi(pypungi.PungiBase):
              self.ayum.arch.setup_arch('ppc64le')
              self.ayum.compatarch = 'ppc64le'

@@ -26,7 +26,7 @@ A tool to create anaconda based installation trees/isos of a set of rpms.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch100 -p1
+%patch100 -p1 -b .nomac
 
 %build
 %{__python} setup.py build
