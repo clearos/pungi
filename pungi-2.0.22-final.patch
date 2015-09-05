@@ -1,0 +1,41 @@
+--- pungi-2.0.22/src/bin/pungi.py.final
++++ pungi-2.0.22/src/bin/pungi.py
+@@ -117,7 +117,7 @@ def main():
+ 
+         if opts.do_all or opts.do_buildinstall:
+            mypungi.doGetRelnotes()
+-           mypungi.doBuildinstall()
++           mypungi.doBuildinstall(opts.final)
+ 
+         if opts.do_all or opts.do_createiso:
+            mypungi.doCreateIsos(split=opts.nosplitmedia)
+@@ -184,6 +184,8 @@ if __name__ == '__main__':
+           help='Create the source isos (other arch runs must be done)')
+         parser.add_option("--force", default=False, action="store_true",
+           help='Force reuse of an existing destination directory (will overwrite files)')
++        parser.add_option("--final", default=False, action="store_true", dest="final",
++          help='Mark release as a final (remove pre-release nag screen)')
+ 
+         parser.add_option("-c", "--config", dest="config",
+           help='Path to kickstart config file')
+--- pungi-2.0.22/src/pypungi/__init__.py.final
++++ pungi-2.0.22/src/pypungi/__init__.py
+@@ -753,7 +753,7 @@ class Pungi(pypungi.PungiBase):
+                 return
+             self._makeMetadata(path, cachedir, repoview=False)
+ 
+-    def doBuildinstall(self):
++    def doBuildinstall(self, final=False):
+         """Run anaconda-runtime's buildinstall on the tree."""
+ 
+ 
+@@ -781,6 +781,9 @@ class Pungi(pypungi.PungiBase):
+         buildinstall.append('--output')
+         buildinstall.append(self.topdir)
+ 
++        if final:
++            buildinstall.append('--final')
++
+         for mirrorlist in self.mirrorlists:
+             buildinstall.append('--mirrorlist')
+             buildinstall.append(mirrorlist)
