@@ -1,0 +1,33 @@
+--- pungi-2.0.22/src/pypungi/__init__.py.isoparam
++++ pungi-2.0.22/src/pypungi/__init__.py
+@@ -1088,11 +1088,11 @@ cost=500
+             self.doCreateMediarepo(split=False)
+ 
+         if treesize > 700: # we're larger than a 700meg CD
+-            isoname = '%s-%s-%s-DVD.iso' % (self.config.get('pungi', 'iso_basename'), self.config.get('pungi', 'version'), 
+-                self.config.get('pungi', 'arch'))
++            isoname = '%s-%s-%s-DVD.iso' % (self.config.get('pungi', 'iso_basename').replace(' ', '_'), 
++                self.config.get('pungi', 'version'), self.config.get('pungi', 'arch'))
+         else:
+-            isoname = '%s-%s-%s.iso' % (self.config.get('pungi', 'iso_basename'), self.config.get('pungi', 'version'), 
+-                self.config.get('pungi', 'arch'))
++            isoname = '%s-%s-%s.iso' % (self.config.get('pungi', 'iso_basename').replace(' ', '_'), 
++                self.config.get('pungi', 'version'), self.config.get('pungi', 'arch'))
+ 
+         isofile = os.path.join(self.isodir, isoname)
+ 
+@@ -1121,12 +1121,8 @@ cost=500
+             extraargs.extend(sparcbootargs)
+ 
+         extraargs.append('-V')
+-        if treesize > 700:
+-            extraargs.append('%s %s %s DVD' % (self.config.get('pungi', 'name'),
+-                self.config.get('pungi', 'version'), self.config.get('pungi', 'arch')))
+-        else:
+-            extraargs.append('%s %s %s' % (self.config.get('pungi', 'name'),
+-                self.config.get('pungi', 'version'), self.config.get('pungi', 'arch')))
++        extraargs.append('%s %s %s' % (self.config.get('pungi', 'name'),
++            self.config.get('pungi', 'version'), self.config.get('pungi', 'arch')))
+ 
+         extraargs.extend(['-o', isofile])
+         
