@@ -2,7 +2,7 @@
 
 Name:           pungi
 Version:        2.0.22
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Distribution compose tool
 
 Group:          Development/Tools
@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sat Sep 5 2015 Shad L. Lords <slords@clearfoundation.com> - 2.0.22-3
+* Sat Sep 5 2015 Shad L. Lords <slords@clearfoundation.com> - 2.0.22-4
 - Fix ISO label and name
 
 * Sat Sep 5 2015 Shad L. Lords <slords@clearfoundation.com> - 2.0.22-2
